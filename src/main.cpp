@@ -10,6 +10,7 @@
 
 #include "../includes/config.h"
 #include "../includes/data.h"
+#include "../includes/computation.h"
 #include <iostream>
 #include <SDL2/SDL.h>
 

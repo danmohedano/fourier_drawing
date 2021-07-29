@@ -9,6 +9,9 @@
  * vectors)
  */
 
+#ifndef DATA_H
+#define DATA_H
+
 #include <cstdint>
 #include <complex>
 
@@ -19,10 +22,12 @@
  */
 class DrawingVector{
     public:
-        DrawingVector(uint8_t);
+        DrawingVector(int16_t);
         std::complex<double> get(double);
         void set_const(double, double);
     private:
-        uint8_t index;
+        int16_t index;
         std::complex<double> c;
 };
+
+#endif

@@ -1,7 +1,7 @@
 #include "../includes/data.h"
 #include <math.h>
 
-DrawingVector::DrawingVector(uint8_t n){
+DrawingVector::DrawingVector(int16_t n){
     index = n;
 }
 
