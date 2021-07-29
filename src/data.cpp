@@ -1,5 +1,6 @@
 #include "../includes/data.h"
 #include <math.h>
+#include <iostream>
 
 DrawingVector::DrawingVector(int16_t n){
     index = n;
@@ -32,5 +33,15 @@ std::complex<double> DrawingVector::get(double t){
 void DrawingVector::set_const(double re, double im){
     c.real(re);
     c.imag(im);
+}
+
+/**
+ * Function: print
+ * ----------------------------------------------------------------------------
+ * Prints the contents of the vector
+ */
+void DrawingVector::print(){
+    std::cout << "Vector " << index << "\n";
+    std::cout << "Cn = " << c.real() << " + " << c.imag() << " i\n";
 }
 

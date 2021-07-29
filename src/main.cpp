@@ -17,6 +17,7 @@
 
 int main(void)
 {
+    /*
     SDL_Window* gWindow = NULL;
     SDL_Surface* gScreenSurface = NULL;
 
@@ -52,6 +53,21 @@ int main(void)
 	gWindow = NULL;
 
 	//Quit SDL subsystems
-	SDL_Quit();
+	SDL_Quit();*/
+
+
+    // Test 
+    std::vector<std::complex<double>> points(4);
+    points[0] = std::complex<double>(2.0, 0.0);
+    points[1] = std::complex<double>(1.0, 1.0);
+    points[2] = std::complex<double>(0.0, 0.0);
+    points[3] = std::complex<double>(1.0, -1.0);
+
+    std::vector<DrawingVector> vs = compute(2, points, 0.25);
+
+    for (DrawingVector i : vs){
+        i.print();
+    }
+
     return 0;
 }

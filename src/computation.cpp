@@ -1,5 +1,6 @@
 #include "../includes/computation.h"
 #include <cmath>
+#include <iostream>
 
 DrawingVector integral(int16_t index, std::vector<std::complex<double>> points, double dt){
     std::complex<double> cn;
@@ -20,10 +21,10 @@ std::vector<DrawingVector> compute(uint16_t n, std::vector<std::complex<double>>
     int16_t index;
     std::vector<DrawingVector> vectors;
 
-    vectors[0] = integral(0, points, dt);
+    vectors.push_back(integral(0, points, dt));
 
     for(uint16_t i = 1; i < n; ++i){
-        index = ceil(i / 2) * pow(-1, i + 1); // step function 1, -1, 2, -2, 3, -3, ...
+        index = ceil(i / 2.0) * pow(-1, i + 1); // step function 1, -1, 2, -2, 3, -3, ...
         vectors.push_back(integral(index, points, dt));
     }
 

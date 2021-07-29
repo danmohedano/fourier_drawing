@@ -25,6 +25,7 @@ class DrawingVector{
         DrawingVector(int16_t);
         std::complex<double> get(double);
         void set_const(double, double);
+        void print();
     private:
         int16_t index;
         std::complex<double> c;
