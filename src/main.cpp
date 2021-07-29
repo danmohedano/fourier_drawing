@@ -8,9 +8,11 @@
  * Main module to execute the program.
  */
 
+#include "../includes/config.h"
+#include "../includes/data.h"
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../includes/config.h"
+
 
 int main(void)
 {

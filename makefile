@@ -20,7 +20,7 @@ setup:
 
 #~~~~~~~~~~~~~ exe ~~~~~~~~~~~~~#
 
-$(EXE): $(OBJ)/main.o
+$(EXE): $(OBJ)/main.o $(OBJ)/data.o
 	@echo "Building executable..."
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS) $(SDL_CFLAGS) $(SDL_LDFLAGS)
 
@@ -28,6 +28,10 @@ $(EXE): $(OBJ)/main.o
 $(OBJ)/main.o: $(SRC)/main.cpp
 	@echo "Compiling main module..."
 	$(CC) $(CFLAGS) -c $< -o $@ $(SDL_CFLAGS) $(SDL_LDFLAGS)
+
+$(OBJ)/data.o: $(SRC)/data.cpp
+	@echo "Compiling data module..."
+	$(CC) $(CFLAGS) -c $< -o $@
 
 #~~~~~~~~~~~~~ cleanup ~~~~~~~~~~~~~#
 clean: clean_obj clean_exe
