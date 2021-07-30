@@ -44,19 +44,35 @@ int main(void)
 
     /*---------LOOP---------*/
     // Test 
-    std::vector<std::complex<double>> points(4);
-    points[0] = std::complex<double>(50.0, 0.0);
-    points[1] = std::complex<double>(25.0, 25.0);
-    points[2] = std::complex<double>(0.0, 0.0);
-    points[3] = std::complex<double>(25.0, -25.0);
+    /*std::vector<std::complex<double>> points(16);
+    points[0] = std::complex<double>(100.0, 0.0);
+    points[1] = std::complex<double>(100.0, 50.0);
+    points[2] = std::complex<double>(100.0, 100.0);
+    points[3] = std::complex<double>(50.0, 100.0);
+    points[4] = std::complex<double>(0.0, 100.0);
+    points[5] = std::complex<double>(-50.0, 100.0);
+    points[6] = std::complex<double>(-100.0, 100.0);
+    points[7] = std::complex<double>(-100.0, 50.0);
+    points[8] = std::complex<double>(-100.0, 0.0);
+    points[9] = std::complex<double>(-100.0, -50.0);
+    points[10] = std::complex<double>(-100.0, -100.0);
+    points[11] = std::complex<double>(-50.0, -100.0);
+    points[12] = std::complex<double>(0.0, -100.0);
+    points[13] = std::complex<double>(50.0, -100.0);
+    points[14] = std::complex<double>(100.0, -100.0);
+    points[15] = std::complex<double>(100.0, -50.0);*/
+    SDL_Delay(2000);
+    std::cout << "INPUT" << std::endl;
+    std::vector<std::complex<double>> points = input(renderer);
+    std::cout << "Total points recorded = " << points.size() << "\n";
 
-    std::vector<DrawingVector> vs = compute(2, points, DT);
+    std::vector<DrawingVector> vs = compute(101, points, DT);
 
     for (DrawingVector i : vs){
         i.print();
     }
 
-    drawLoop(renderer, vs);
+    drawLoop(renderer, vs, points);
 
     /*---------CLEAN---------*/
     //Destroy renderer
