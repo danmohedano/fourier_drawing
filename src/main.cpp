@@ -11,15 +11,19 @@
 #include "../includes/config.h"
 #include "../includes/data.h"
 #include "../includes/computation.h"
+#include "../includes/io.h"
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <cmath>
 
 
 int main(void)
 {
-    /*
-    SDL_Window* gWindow = NULL;
-    SDL_Surface* gScreenSurface = NULL;
+    /*---------INITIALIZATION---------*/
+    std::cout << "Initializing SDL2 Window...\n";
+
+    SDL_Window* window = NULL;
+    SDL_Renderer* renderer = NULL;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
@@ -28,46 +32,45 @@ int main(void)
     }
     else
     {
-        //Create window
-		gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( gWindow == NULL )
+        //Create window and renderer
+		if(SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer) != 0)
 		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+			std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
 			return 1;
-		}
-		else
-		{
-			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( gWindow );
-		}
+        }
     }
 
-    std::cout << "Init correct\n";
+    std::cout << "Initialization finished.\n";
 
-    SDL_UpdateWindowSurface(gWindow);
-    SDL_Delay(2000);
-
-
-    //Destroy window
-	SDL_DestroyWindow( gWindow );
-	gWindow = NULL;
-
-	//Quit SDL subsystems
-	SDL_Quit();*/
-
-
+    /*---------LOOP---------*/
     // Test 
     std::vector<std::complex<double>> points(4);
-    points[0] = std::complex<double>(2.0, 0.0);
-    points[1] = std::complex<double>(1.0, 1.0);
+    points[0] = std::complex<double>(50.0, 0.0);
+    points[1] = std::complex<double>(25.0, 25.0);
     points[2] = std::complex<double>(0.0, 0.0);
-    points[3] = std::complex<double>(1.0, -1.0);
+    points[3] = std::complex<double>(25.0, -25.0);
 
-    std::vector<DrawingVector> vs = compute(2, points, 0.25);
+    std::vector<DrawingVector> vs = compute(2, points, DT);
 
     for (DrawingVector i : vs){
         i.print();
     }
+
+    drawLoop(renderer, vs);
+
+    /*---------CLEAN---------*/
+    //Destroy renderer
+    if (renderer){
+        SDL_DestroyRenderer(renderer);
+    }
+
+    //Destroy window
+	if (window){
+        SDL_DestroyWindow(window);
+    }
+
+	//Quit SDL subsystems
+	SDL_Quit();
 
     return 0;
 }

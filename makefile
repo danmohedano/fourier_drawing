@@ -20,7 +20,7 @@ setup:
 
 #~~~~~~~~~~~~~ exe ~~~~~~~~~~~~~#
 
-$(EXE): $(OBJ)/main.o $(OBJ)/data.o $(OBJ)/computation.o
+$(EXE): $(OBJ)/main.o $(OBJ)/data.o $(OBJ)/computation.o $(OBJ)/io.o
 	@echo "Building executable..."
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS) $(SDL_CFLAGS) $(SDL_LDFLAGS)
 
@@ -36,6 +36,10 @@ $(OBJ)/data.o: $(SRC)/data.cpp $(INC)/data.h
 $(OBJ)/computation.o: $(SRC)/computation.cpp $(INC)/computation.h $(INC)/data.h
 	@echo "Compiling computation module..."
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ)/io.o: $(SRC)/io.cpp $(INC)/io.h $(INC)/data.h
+	@echo "Compiling io module..."
+	$(CC) $(CFLAGS) -c $< -o $@ $(SDL_CFLAGS) $(SDL_LDFLAGS)
 
 #~~~~~~~~~~~~~ cleanup ~~~~~~~~~~~~~#
 clean: clean_obj clean_exe
