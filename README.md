@@ -1,6 +1,13 @@
 # Fourier Drawing
 Inspired by [3blue1brown's](https://www.youtube.com/watch?v=r6sGWTCMz2k) video on the topic, the program attempts to use the [Fourier Transform](https://en.wikipedia.org/wiki/Fourier_transform) to describe a drawing as a series of rotating vectors.
 
+
+
+![vector_gif](https://user-images.githubusercontent.com/43313293/127737198-05a05851-2de8-4a59-9ad3-29aa0cef6940.gif)
+
+
+
+
 ## Requirements
 - SDL Library. To install in Linux/Unix, simply use `sudo apt-get install libsdl2-2.0 libsdl2-dev`
 
